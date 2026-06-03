@@ -36,6 +36,7 @@ namespace Taipu.UI
             }
             child.parent = this;
             children.Add(child);
+            child.RecalculateTransform();
         }
         public void AddChildren(UI.Element[] children)
         {
@@ -53,19 +54,27 @@ namespace Taipu.UI
             children.Remove(child);
             child.parent = null;
         }
-
-        public virtual void Update(GameTime gameTime)
+        public void RecalculateTransform()
         {
             if (parent != null)
             {
-                absoluteScale = parent.absoluteScale*localScale;
-                absolutePosition = parent.absolutePosition + (localPosition * absoluteScale);
+                absoluteScale = parent.absoluteScale * localScale;
+                absolutePosition = parent.absolutePosition + (localPosition * parent.absoluteScale);
             }
             else
             {
                 absolutePosition = localPosition;
                 absoluteScale = localScale;
             }
+            foreach (UI.Element child in children)
+            {
+                child.RecalculateTransform();
+            }
+        }
+
+        public virtual void Update(GameTime gameTime)
+        {
+            RecalculateTransform();
             OnUpdate(gameTime);
             foreach (UI.Element child in children)
             {

@@ -72,11 +72,11 @@ namespace Taipu
         }
         public static bool MiddleJustReleased()
         {
-            return (currentMouse.MiddleButton == ButtonState.Released && previousMouse.LeftButton == ButtonState.Pressed);
+            return (currentMouse.MiddleButton == ButtonState.Released && previousMouse.MiddleButton == ButtonState.Pressed);
         }
         public static bool RightJustReleased()
         {
-            return (currentMouse.RightButton == ButtonState.Released && previousMouse.LeftButton == ButtonState.Pressed);
+            return (currentMouse.RightButton == ButtonState.Released && previousMouse.RightButton == ButtonState.Pressed);
         }
         public static bool MWheelUp()
         {

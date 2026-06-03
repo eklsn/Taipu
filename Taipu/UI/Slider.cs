@@ -40,7 +40,7 @@ namespace Taipu.UI
             }
             if ((value != prevValue) && (valueLinear == prevValueLinear))
             {
-                valueLinear = (value - bottomRange) / upperRange-bottomRange;
+                valueLinear = (value - bottomRange) / (upperRange-bottomRange);
             }
                 if (MouseMan.LeftJustPressed() && !dragging)
             {
