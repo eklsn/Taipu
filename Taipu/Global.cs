@@ -14,7 +14,7 @@ namespace Taipu
         public static GameWindow window;
         public static GameTime gameTime;
         public static InputListener inputListener;
-        public static Game1 game;
+        public static Mainloop game;
         public static double deltaTime => gameTime.ElapsedGameTime.TotalSeconds;
     }
 }

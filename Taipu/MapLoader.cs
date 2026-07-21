@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Text.Json;
 using System.Text.Json.Nodes;
+using Microsoft.Xna.Framework.Graphics;
 namespace Taipu
 {
     public class MapLoader
@@ -39,6 +41,7 @@ namespace Taipu
             }
             catch
             {
+                Debug.WriteLine("couldn't parse json. returning an empty map to avoid a crash.");
                 return new();
             }
             Dictionary<String,Object> validData = null;
@@ -76,7 +79,8 @@ namespace Taipu
             }
             else
             {
-                return null;
+                Debug.WriteLine("the file is a json, but not a taipu one. returning an empty map to avoid a crash.");
+                return new();
             }
         }
 

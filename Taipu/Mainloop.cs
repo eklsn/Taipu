@@ -5,10 +5,10 @@ using Myra;
 using System.Diagnostics;
 namespace Taipu
 {
-    public class Game1 : Game
+    public class Mainloop : Game
     {
 
-        public Game1()
+        public Mainloop()
         {
             Debug.WriteLine("Welcome to Taipu <3");
                 
@@ -40,7 +40,7 @@ namespace Taipu
             
             var displayMode = GraphicsAdapter.DefaultAdapter.CurrentDisplayMode;
             MatrixUpscaler.SetVRes(1280, 720);
-            WindowManager.SetResolution(1920, 1080);
+            WindowManager.SetResolution(1600, 900);
             MatrixUpscaler.Update(Global.graphicsDevice.Viewport);
             SceneManager.LoadScene(new Scenes.Disclaimer());
 

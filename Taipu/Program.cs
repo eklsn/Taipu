@@ -1,2 +1,2 @@
-﻿using var game = new Taipu.Game1();
+﻿using var game = new Taipu.Mainloop();
 game.Run();
