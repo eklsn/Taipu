@@ -56,13 +56,13 @@ namespace Taipu
             if (tempoStream != 0)
             {
                 Bass.StreamFree(tempoStream);
-                tempoStream = 0;
             }
-            if (musicStream != 0)
+            if (musicStream != 0 && musicStream!=tempoStream)
             {
                 Bass.StreamFree(musicStream);
-                musicStream = 0;
             }
+            tempoStream=0;
+            musicStream=0;
         }
     }
 }

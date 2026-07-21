@@ -90,7 +90,18 @@ namespace Taipu.Editor
         }
         public void Update()
         {
-            
+            if (KeyboardMan.JustPressed(Keys.F5))
+            {
+                Bass.ChannelSetAttribute(music.tempoStream, ChannelAttribute.Tempo, -90);
+            }
+            if (KeyboardMan.JustPressed(Keys.F6))
+            {
+                Bass.ChannelSetAttribute(music.tempoStream, ChannelAttribute.Tempo, -75);
+            }
+            if (KeyboardMan.JustPressed(Keys.F7))
+            {
+                Bass.ChannelSetAttribute(music.tempoStream, ChannelAttribute.Tempo, 0);
+            }
             if (SceneManager.currentScene != this) {  return; }
             if (currentTab == EditorTabs.Audio)
             {
@@ -166,18 +177,20 @@ namespace Taipu.Editor
                 {
                     scrollFactor = 1.0f;
                 }
-                if (MouseMan.MWheelUp() || MouseMan.MWheelDown())
-                {
-                    scrollFactor = scrollFactor * 2;
+                if (currentTab == EditorTabs.Main) {
+                    if (MouseMan.MWheelUp() || MouseMan.MWheelDown())
+                    {
+                        scrollFactor = scrollFactor * 2;
+                    }
+                    if (KeyboardMan.Down(Keys.Left) || MouseMan.MWheelUp())
+                    {
+                        music.Seek(music.streamPosition - (0.05 * scrollFactor));
+                    }
+                    if (KeyboardMan.Down(Keys.Right) || MouseMan.MWheelDown())
+                    {
+                        music.Seek(music.streamPosition + (0.05 * scrollFactor));
+                    }
                 }
-                //if (KeyboardMan.Down(Keys.Left) || MouseMan.MWheelUp())
-                //{
-                //    music.Seek(music.streamPosition - (0.05 * scrollFactor));
-                //}
-                //if (KeyboardMan.Down(Keys.Right) || MouseMan.MWheelDown())
-                //{
-                //    music.Seek(music.streamPosition + (0.05 * scrollFactor));
-                //}
             }
             switch (currentTab)
             {

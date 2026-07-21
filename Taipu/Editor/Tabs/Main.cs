@@ -79,14 +79,16 @@ namespace Taipu.Editor.Tabs
                     }
                 }
             }
-            for (int i = 0; i <= renderKeys.Count - 1; i++)
+            for (int i = renderKeys.Count - 1; i >= 0; i--)
             {
                 KeyObject key = renderKeys[i];
+                
                 if (!root.level.keys.Contains(key.keyLink))
                 {
                     renderKeys.RemoveAt(i);
-                    return;
+                    continue;
                 }
+                
                 if (((key.keyTime > root.level.preRingTime + root.level.ringTime + root.level.hitTimeframe + root.level.disappearTime) || (key.keyTime < 0)) && !key.visible)
                 {
                     renderKeys.RemoveAt(i);
